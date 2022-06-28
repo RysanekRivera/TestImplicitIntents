@@ -30,7 +30,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 30
-          script: ./gradlew connectedCheck
+          script: ./gradlew connectedAndroidTest
 
       # Runs a set of commands using the runners shell
       - name: Upload test report
