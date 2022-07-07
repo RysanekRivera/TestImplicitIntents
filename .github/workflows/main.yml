@@ -59,7 +59,7 @@ jobs:
     strategy:
       matrix:
         api-level: [24, 30, 32]
-        target: [google_apis]
+        target: [default]
         
     steps:
       - name: Checkout the code
