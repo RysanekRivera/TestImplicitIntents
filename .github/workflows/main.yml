@@ -46,7 +46,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
-          script: ./gradlew Pandroid.testInstrumentationRunnerArguments.class=com.rysanek.testimplicitintents.ui.fragments.GalleryIntentFragmentTest app:connectedAndroidTes
+          script: ./chmod +x gradlew Pandroid.testInstrumentationRunnerArguments.class=com.rysanek.testimplicitintents.ui.fragments.GalleryIntentFragmentTest app:connectedAndroidTes
           profile: Nexus 5X
           force-avd-creation: false
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
