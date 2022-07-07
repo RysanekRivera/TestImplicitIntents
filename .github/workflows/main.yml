@@ -33,7 +33,6 @@ jobs:
           path: app/build/reports/lint-results-debug.html
 
   unit-test:
-    needs: [lint]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
@@ -52,7 +51,6 @@ jobs:
           path: app/build/reports/tests/testDebugUnitTest/
 
   instrumentation-test:
-    needs: [unit-test]
     runs-on: macos-latest
     steps:
       - name: Checkout the code
