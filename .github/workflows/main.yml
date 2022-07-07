@@ -19,6 +19,9 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
+      
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
         
       - name: Run lint
         run: ./gradlew lintDebug
