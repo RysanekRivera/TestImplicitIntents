@@ -42,16 +42,25 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Run tests
-        run: ./gradlew test
+        run: ./gradlew test stacktrace
+      
+      - name: Run detekt
+        run: ./gradlew detecktCheck
 
       - name: Upload test report
         uses: actions/upload-artifact@v2
         with:
           name: unit_test_report
-          path: app/build/reports/tests/testDebugUnitTest/
+          path: app/build/reports/
+        if: always()  
 
   instrumentation-test:
     runs-on: macos-latest
+    strategy:
+      matrix:
+        api-level: [24, 30, 32]
+        target: [default, google_apis]
+        
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
@@ -67,8 +76,9 @@ jobs:
       - name: Run espresso tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 29
-          script: ./gradlew connectedCheck
+          api-level: ${{ matrix.api-level}}
+          target: ${{ matrix.target }}
+          script: ./gradlew connectedCheck --stacktrace
 
       - name: Upload test report
         uses: actions/upload-artifact@v2
