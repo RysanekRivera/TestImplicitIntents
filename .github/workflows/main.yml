@@ -80,7 +80,7 @@ jobs:
           path: app/build/reports/androidTests/connected/
   
   static-code-analysis:
-      runs-on: ubuntu-latest
+      runs-on: windows-latest
       steps:
         - name: Checkout the code
           uses: actions/checkout@v2
