@@ -80,7 +80,7 @@ jobs:
 #          path: app/build/reports/androidTests/connected/
 #
   static-code-analysis:
-      runs-on: windows-latest
+      runs-on: ubuntu-latest
       steps:
         - name: Checkout the code
           uses: actions/checkout@v2
@@ -95,7 +95,8 @@ jobs:
           run: chmod +x ./gradlew
           
         - name: Static Code Analysis
-          run: ./gradlew app:sonarqube -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+          uses: sonarsource/sonarcloud-github-action@v1.3
+          run: ./gradlew app:sonarqube -Dsonar.login=${{ secrets.SONAR_TOKEN }} --stacktrace
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
