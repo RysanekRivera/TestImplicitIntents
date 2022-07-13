@@ -47,6 +47,9 @@ class GalleryIntentFragment: BaseFragment() {
                     }
                 }
             }
+
+        val bug = "CI".equals("CD")
+        Log.d(TAG, "is this a bug: $bug")
     }
     
     override fun onCreateView(
@@ -55,7 +58,7 @@ class GalleryIntentFragment: BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentGalleryIntentBinding.inflate(inflater, container, false)
-        
+
         binding.btGoToGallery.setOnClickListener {
             // Intent to pick items in the Images folder
             Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI).also { intent ->
