@@ -95,7 +95,6 @@ jobs:
           run: chmod +x ./gradlew
           
         - name: Static Code Analysis
-          uses: sonarsource/sonarcloud-github-action@v1.3
           run: ./gradlew app:sonarqube -Dsonar.login=${{ secrets.SONAR_TOKEN }} --stacktrace
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
